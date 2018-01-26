@@ -53,8 +53,9 @@ train_cols   = Count_ann_new.columns[4:]
 logit       = sm.Logit(Count_ann_new['Highly_Active'], Count_ann_new['ts_y'])
 result      = logit.fit(disp=False)
 Count_ann_new['My_feature'] = result.predict()
-
+Count_ann_new['My_feature'] = result.predict()
+Count_ann_new.reset_index(inplace=True)
 ## Print the output to the log file
-print(Count_ann_new)
+print(Count_ann_new[["uuid","Highly_Active","Multiple_days","Busi_weekday","My_feature"]])
 
 
