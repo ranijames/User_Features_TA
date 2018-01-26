@@ -47,7 +47,8 @@ Counts_annon = pd.merge(df,Counts,on='uuid')
 #print(Counts.head())
 Counts_annon=Counts_annon.sort_values(by='ts_x')
 Count_ann_new=pd.merge(New,Counts_annon[["ts_y","uuid"]],on='uuid')
-train_cols   = Count_ann_new.columns[4:]
+# The column with counts based on grouped by on the Timeseries for each users ts_y
+train_cols   = Count_ann_new.columns[4:] 
 
 # fit the model
 logit       = sm.Logit(Count_ann_new['Highly_Active'], Count_ann_new['ts_y'])
