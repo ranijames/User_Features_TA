@@ -25,12 +25,12 @@ def Features(df):
 
     u = df.uuid.unique()
     a = df.groupby(['uuid', 'date']).size().reset_index(level=1, drop=True)
-    a = a[a>1]
+    a = a[a>5]
     target_df = (a[~a.index.duplicated()]
                     .astype(bool).reindex(u, fill_value=False).to_frame(name='Highly_Active'))
 
     a = df.groupby('uuid')['ts'].nunique()
-    target_df['Multiple_days'] = a[a>1].astype(bool).reindex(u, fill_value=False)
+    target_df['Multiple_days'] = a[a>5].astype(bool).reindex(u, fill_value=False)
 
     a = df.loc[(df.Busi_days==True)&(df.Busi_hours==True)].uuid.unique()
     target_df['Busi_weekday'] = target_df.index.isin(a)
