@@ -8,18 +8,18 @@ import csv
 import statsmodels.api as sm
 
 with open(sys.argv[1],'r') as my_file:
-     df = pd.read_csv(my_file,sep=',',header=0)
-     df['ts'] = pd.to_datetime(df['ts'], errors='coerce')
-     df.ts = pd.to_datetime(df.ts)
+     df        = pd.read_csv(my_file,sep=',',header=0)
+     df['ts']  = pd.to_datetime(df['ts'], errors='coerce')
+     df.ts     = pd.to_datetime(df.ts)
      df['day_of_week'] =df['ts'].dt.weekday_name
-     df['date'] = df.ts.dt.floor('d')
-     df['Busi_days'] = df['ts'].dt.dayofweek < 5
-     df['Busi_hours'] = df['ts'].dt.time.between(datetime.time(9), datetime.time(18))
-     df['date'] = df.ts.dt.floor('d')
+     df['date']        = df.ts.dt.floor('d')
+     df['Busi_days']   = df['ts'].dt.dayofweek < 5
+     df['Busi_hours']  = df['ts'].dt.time.between(datetime.time(9), datetime.time(18))
+     df['date']        = df.ts.dt.floor('d')
      
 ## Defining function for the features     
 def Features(df):
-    df.ts = pd.to_datetime(df.ts)
+    df.ts      = pd.to_datetime(df.ts)
 
     df['date'] = df.ts.dt.floor('d')
 
