@@ -4,7 +4,9 @@ The TA_script.py scripts helps to define the three features,
    multiple_days: Whether the user is active for multiple days (True/False)
    weekday_biz: Whether the user's traffic tends to occur during weekday business hours (True/False)
 
-The script can be used as python TA_script.py input >output
+The script can be used as:
+
+`python TA_script.py input >output`
 
 The additional feature is defined using logistic regression. The prediction is based on highly active users based on time series information.
 
